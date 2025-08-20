@@ -4,4 +4,14 @@
     <span class="navbar-text text-white d-none d-md-inline-block">{{ currentTime | date: 'yyyy-MM-dd' }}</span>
     <span class="navbar-text text-white d-none d-md-inline-block ms-2">{{ currentTime | date: 'HH:mm:ss' }}</span>
   </div>
+  <button
+    class="btn btn-outline-light btn-sm ms-2"
+    type="button"
+    (click)="toggleSidebar()"
+    [attr.aria-expanded]="sidebarOpen"
+    aria-controls="sidebarMenu"
+    aria-label="切換導航選單"
+  >
+    <i class="bi bi-list" aria-hidden="true"></i>
+    </button>
 </header>

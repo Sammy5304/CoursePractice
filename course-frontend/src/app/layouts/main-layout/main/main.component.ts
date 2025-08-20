@@ -13,10 +13,15 @@ export class MainComponent {
   currentDate = new Date();
   currentTime = new Date();
 
+  sidebarOpen = true;
+
   ngOnInit() {
     setInterval(() => {
       this.currentTime = new Date();
     }, 1000); // Update every second
   }
 
+  toggleSidebar(){
+    this.sidebarOpen = !this.sidebarOpen;
+  }
 }
