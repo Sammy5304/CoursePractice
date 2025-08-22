@@ -1,17 +1,83 @@
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+<header class="navbar custom-navbar sticky-top">
   <div class="d-flex align-items-center">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white">學習地圖資訊系統</a>
-    <span class="navbar-text text-white d-none d-md-inline-block">{{ currentTime | date: 'yyyy-MM-dd' }}</span>
-    <span class="navbar-text text-white d-none d-md-inline-block ms-2">{{ currentTime | date: 'HH:mm:ss' }}</span>
+    <a class="navbar-brand text-light">學習地圖資訊系統</a>
+    <span class="navbar-text text-light">{{ currentTime | date: 'yyyy-MM-dd' }}</span>
+    <span class="navbar-text text-light ms-2">{{ currentTime | date: 'HH:mm:ss' }}</span>
   </div>
-  <button
-    class="btn btn-outline-light btn-sm ms-2"
-    type="button"
-    (click)="toggleSidebar()"
-    [attr.aria-expanded]="sidebarOpen"
-    aria-controls="sidebarMenu"
-    aria-label="切換導航選單"
-  >
-    <i class="bi bi-list" aria-hidden="true"></i>
+  <div class="d-flex align-items-center">
+    <!-- 語言選擇按鈕 -->
+    <div class="dropdown me-3">
+      <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        切換語言
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">繁體中文</a></li>
+        <li><a class="dropdown-item" href="#">簡體中文</a></li>
+        <li><a class="dropdown-item" href="#">English</a></li>
+      </ul>
+    </div>
+    <!-- 使用者顯示 -->
+    <button class="btn btn-outline-light me-3" type="button">admin</button>
+    <!-- 登出按鈕 -->
+    <button class="btn btn-outline-light me-3" type="button">登出</button>
+    <!-- sidebar按鈕 -->
+    <button class="btn btn-outline-light" type="button" (click)="toggleSidebar()">
+      <i class="bi bi-list"></i>
     </button>
+    
+  </div>
 </header>
+<div class="main-layout-wrapper" style="display: flex; height: calc(100vh - 60px); overflow-x: hidden;">
+  <nav id="sidebar" class="bg-light border-end p-3" [class.collapsed]="!sidebarOpen">
+      <ul class="list-unstyled ps-0">
+        <!-- 基本主檔 -->
+        <li>
+          <button class="btn w-100 text-start section-title" (click)="toggleModule(0)">
+            基本主檔
+            <span class="float-end">
+              <i class="bi" [ngClass]="{'bi-caret-down': !collapsedModules[0], 'bi-caret-up': collapsedModules[0]}"></i>
+            </span>
+          </button>
+          <div *ngIf="collapsedModules[0]">
+            <ul class="list-unstyled ms-3">
+              <li><a routerLink="departments" class="text-dark">部門主檔</a></li>
+              <li><a routerLink="employees" class="text-dark">員工主檔</a></li>
+              <li><a routerLink="job-roles/query" class="text-dark">職務主檔</a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- 課程管理 -->
+        <li class="mt-3">
+          <button class="btn w-100 text-start section-title" (click)="toggleModule(1)">
+            課程管理
+            <span class="float-end">
+              <i class="bi" [ngClass]="{'bi-caret-down': !collapsedModules[1], 'bi-caret-up': collapsedModules[1]}"></i>
+            </span>
+          </button>
+          <div *ngIf="collapsedModules[1]">
+            <ul class="list-unstyled ms-3">
+              <li><a routerLink="course-events" class="text-dark">課程活動</a></li>
+              <li><a routerLink="courses" class="text-dark">課程主檔</a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- Demo 功能 -->
+        <li class="mt-3">
+          <button class="btn w-100 text-start section-title" (click)="toggleModule(2)">
+            Demo 功能
+            <span class="float-end">
+              <i class="bi" [ngClass]="{'bi-caret-down': !collapsedModules[2], 'bi-caret-up': collapsedModules[2]}"></i>
+            </span>
+          </button>
+          <div *ngIf="collapsedModules[2]">
+            <ul class="list-unstyled ms-3">
+              <li><a routerLink="dialog-demo" class="text-dark">Dialog Demo</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+  </nav>
+  <main class="flex-grow-1 p-4">
+    <router-outlet />
+  </main>
+</div>

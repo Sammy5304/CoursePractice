@@ -1,442 +1,160 @@
-/* =================================
-   Bootstrap Dashboard Styles
-   ================================= */
-
-.bi {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-}
-
-/* =================================
-   Mobile Backdrop
-   ================================= */
-
-.mobile-backdrop {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1040;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-@media (max-width: 767.98px) {
-  .mobile-backdrop.show {
-    display: block;
-  }
-}
-
-/* =================================
-   Container Layout
-   ================================= */
-
-.container-fluid {
-  height: calc(100vh - 48px); /* Subtract navbar height */
-}
-
-.row {
-  height: 100%;
-  margin: 0;
-}
-
-.row.h-100 {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: stretch; /* Ensure both sidebar and main have same height */
-}
-
-/* =================================
-   Sidebar Styles
-   ================================= */
-
-.sidebar {
-  transition: all 0.3s ease-in-out;
-  background-color: #f8f9fa !important;
-  border-right: 1px solid #dee2e6;
-}
-
-@media (min-width: 768px) {
-  .sidebar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 48px;
-    height: calc(100vh - 48px);
-    overflow-y: auto;
-    width: 280px; /* Fixed optimal width */
-    min-width: 280px;
-    max-width: 280px;
-    flex: 0 0 280px; /* Fixed flex basis */
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .sidebar.sidebar-hidden {
-    width: 0;
-    min-width: 0;
-    max-width: 0;
-    flex: 0 0 0;
-    overflow: hidden;
-    border-right: none;
-  }
-  
-  .sidebar .offcanvas-md {
-    position: static;
-    visibility: visible;
-    background-color: transparent;
-    border: 0;
-    box-shadow: none;
-    transform: none;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1050;
-    width: min(280px, 75vw); /* Responsive width: max 280px or 75% of viewport */
-    max-width: 320px;
-    min-width: 240px;
-    padding: 48px 0 0;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transform: translateX(-100%);
-    background-color: #f8f9fa;
-  }
-  
-  .sidebar:not(.sidebar-hidden),
-  .sidebar.show {
-    transform: translateX(0);
-  }
-  
-  .sidebar .offcanvas-md.show {
-    transform: none;
-  }
-}
-
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-  padding: 0.75rem 1rem;
-  border: none;
-}
-
-.sidebar .nav-link:hover {
-  color: #2470dc;
-  background-color: rgba(0, 0, 0, .05);
-}
-
-.sidebar .nav-link.active {
-  color: #2470dc;
-  background-color: rgba(36, 112, 220, 0.1);
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-}
-
-/* =================================
-   Navbar Styles
-   ================================= */
-
-.navbar {
-  min-height: 48px;
-  max-height: 48px;
-  overflow: visible; /* 允許 dropdown 溢出 */
-}
-
-.navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-}
-
-.navbar .form-control {
-  padding: .75rem 1rem;
-}
-
-/* Header layout adjustments */
-.navbar > .d-flex {
+.main-layout-wrapper {
   flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
 }
 
-/* Right navbar items alignment */
-.navbar-nav.ms-auto {
-  margin-right: 0 !important;
+.main-content {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  
+  /* 隱藏滾動條但保持滾動功能 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 和 Edge */
 }
 
-.navbar-nav .nav-item {
+/* Webkit 瀏覽器 (Chrome, Safari) */
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+// 主內容區塊標題（如基本主檔、課程管理等）
+.section-title, .card-header, .main-title {
+  color: #1976d2;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  background: none;
+  border: none;
+  margin-bottom: 1rem;
+}
+.custom-navbar {
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 0.5rem 2rem;
+  height: 60px;
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .navbar-text {
+    font-size: 1.1rem;
+    color: #f8f9fa;
+  }
+}
+
+#sidebar {
+  width: 240px;
+  min-width: 60px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f8f9fa;
+  border-right: 1px solid #e3eafc;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  box-shadow: none;
+  position: static;
+  height: auto;
+}
+
+#sidebar.collapsed {
+  width: 60px;
+}
+
+#sidebar .btn,
+#sidebar .btn-toggle,
+#sidebar a {
+  transition: color 0.2s, background 0.2s;
+}
+
+#sidebar .btn {
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  padding: 0.7rem 0.5rem 0.7rem 1rem;
+  border-radius: 8px;
   display: flex;
   align-items: center;
+  color: #1976d2;
+  font-weight: 400;
+  text-decoration: none;
+  justify-content: space-between;
 }
 
-/* Ensure buttons are properly aligned */
-.navbar-nav .btn {
-  margin: 0;
+#sidebar .btn:hover,
+#sidebar a:hover {
+  background: #e3eafc;
+  color: #1976d2;
 }
 
-.navbar-text {
-  margin-bottom: 0;
+#sidebar .bi {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  color: #1976d2;
 }
 
-/* =================================
-   Responsive Navigation
-   ================================= */
-
-@media (max-width: 767.98px) {
-  .navbar-nav .dropdown .btn,
-  .navbar-nav .btn {
-    font-size: 0.8rem;
-    padding: 0.25rem 0.5rem;
-  }
-  
-  /* Ensure main content is not affected by sidebar in mobile */
-  main {
-    width: 100% !important;
-    margin-left: 0 !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
+#sidebar.collapsed .btn span,
+#sidebar.collapsed .btn-toggle span,
+#sidebar.collapsed a span,
+#sidebar.collapsed .fw-bold,
+#sidebar.collapsed ul li ul {
+  display: none !important;
 }
 
-/* =================================
-   Module Toggle Buttons
-   ================================= */
-
-.sidebar .nav-link[aria-expanded="true"] {
-  background-color: rgba(36, 112, 220, 0.1);
-  color: #2470dc;
+#sidebar.collapsed .section-title {
+  color: transparent !important;
 }
 
-.sidebar .nav-link[aria-expanded="true"] i {
-  transform: rotate(180deg);
+#sidebar .fw-bold {
+  font-size: 1.2rem;
+  color: #1976d2;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
-.sidebar .nav-link i {
-  transition: transform 0.2s ease;
+#sidebar ul {
+  padding-left: 0;
 }
 
-/* =================================
-   Collapsible Content
-   ================================= */
-
-.sidebar .collapse .nav-link {
-  padding: 0.5rem 1rem 0.5rem 2rem;
-  font-size: 0.875rem;
-  font-weight: normal;
+#sidebar ul li {
+  margin-bottom: 0.5rem;
 }
 
-.sidebar .collapse .nav-link:hover {
-  background-color: rgba(0, 0, 0, .05);
+#sidebar ul li ul {
+  margin-top: 0.5rem;
 }
 
-.sidebar .collapse .nav-link.active {
-  color: #2470dc;
-  background-color: rgba(36, 112, 220, 0.15);
+#sidebar ul li ul a {
+  color: #222;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  display: block;
+}
+
+#sidebar ul li ul a:hover {
+  background: #e3eafc;
+  color: #1976d2;
+}
+
+#sidebar .active {
+  color: #1976d2 !important;
+  font-weight: 400;
+}
+
+#sidebar .btn-toggle {
   font-weight: 500;
 }
 
-/* =================================
-   Main Content Area
-   ================================= */
-
-main {
-  padding-top: 1rem;
-  transition: all 0.3s ease-in-out;
-  flex: 1 1 auto; /* Take remaining space and allow growing */
-  min-width: 0; /* Allow shrinking */
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  main {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-left: 0;
-    display: block; /* Ensure main content is always visible */
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  /* Ensure main content always takes available space */
-  main.sidebar-open {
-    /* When sidebar is open, main takes remaining space */
-    flex: 1 1 auto;
-  }
-  
-  main.sidebar-closed {
-    /* When sidebar is closed, main takes full space */
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-  
-  /* Additional safety net for visibility */
-  .row main {
-    min-width: 200px; /* Ensure minimum width for content */
-  }
-}
-
-@media (max-width: 767.98px) {
-  main {
-    padding-top: 0.5rem;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: 1 1 100% !important;
-  }
-}
-
-/* =================================
-   Button Optimizations
-   ================================= */
-
-.btn-sm {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-}
-
-/* =================================
-   Mobile Optimizations
-   ================================= */
-
-@media (max-width: 575.98px) {
-  .navbar-brand {
-    font-size: 0.9rem !important;
-  }
-  
-  .navbar-nav .dropdown .btn,
-  .navbar-nav .btn {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.4rem;
-  }
-  
-  .navbar-text {
-    font-size: 0.8rem;
-  }
-}
-
-/* =================================
-   User Info Styling
-   ================================= */
-
-.user-info-container {
-  padding: 0.15rem 0.75rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-  height: 32px; /* 強制固定高度 */
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .navbar-text {
-    margin: 0;
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 1.2;
-  }
-}
-
-.user-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  i {
-    font-size: 0.95rem;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-  }
-}
-
-.text-light-emphasis {
-  color: rgba(255, 255, 255, 0.75) !important;
-}
-
-/* =================================
-   Navbar Button Styling (統一樣式)
-   ================================= */
-
-.navbar-nav .btn-unified {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  font-size: 0.875rem;
-  line-height: 1.2;
-  height: 32px; /* 強制固定高度 */
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  &:focus {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
-  }
-  
-  &:active {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(0);
-  }
-}
-
-// Dropdown menu 也使用統一樣式
-.navbar-nav .dropdown .btn-unified.dropdown-toggle::after {
-  margin-left: 0.5rem;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
-}
-
-// 響應式調整
-@media (max-width: 575.98px) {
-  .navbar-nav .btn-unified {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.5rem;
-  }
-}
-
-/* =================================
-   Dropdown 修正樣式
-   ================================= */
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute !important;
-  top: 100% !important;
-  left: auto !important;
-  right: 0 !important;
-  z-index: 1050 !important;
-  min-width: 120px;
-  margin-top: 0.25rem;
-  
-  &.show {
-    display: block !important;
-  }
+#sidebar .active {
+  color: #0d6efd !important;
 }

@@ -1,15 +1,17 @@
-import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [DatePipe],
+  imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {
-
+export class MainComponent implements OnInit{
+  collapsedModules: boolean[] = [];
+  
   currentDate = new Date();
   currentTime = new Date();
 
@@ -23,5 +25,9 @@ export class MainComponent {
 
   toggleSidebar(){
     this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  toggleModule(index: number) {
+    this.collapsedModules[index] = !this.collapsedModules[index];
   }
 }
