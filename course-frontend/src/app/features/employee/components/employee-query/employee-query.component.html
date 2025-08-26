@@ -1,0 +1,70 @@
+<div class="card fixed-card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card-title h4 mt-2"><i class="bi bi-briefcase me-2"></i>員工查詢條件</div>
+    <button class="btn btn-outline-light" type="button" (click)="toggleCollapse()">
+      <i class="bi" [ngClass]="{'bi-caret-down': isCollapsed, 'bi-caret-up': !isCollapsed}"></i>
+    </button>
+  </div>
+  <div class="collapse" [ngClass]="{'show': !isCollapsed}" id="collapseExample">
+    <div class="card-body">
+      <form class="row g-3">
+        <div class="col-md-6 col-lg-3">
+          <label>員工代碼</label>
+          <input type="text" class="form-control" placeholder="輸入員工代碼">
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label>員工姓名</label>
+          <input type="text" class="form-control" placeholder="輸入員工姓名">
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label>所屬部門</label>
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>選擇部門</option>
+            <option value="1">HBI</option>
+            <option value="2">NBI</option>
+            <option value="3">TESTPD100</option>
+            <option value="4">TESTQA101</option>
+            <option value="5">TESTQA103</option>
+            <option value="6">V300</option>
+          </select>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label>職稱</label>
+          <input type="text" class="form-control" placeholder="輸入職稱">
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label>Email</label>
+          <input type="text" class="form-control" placeholder="輸入Email">
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label>建檔日期起</label>
+          <input type="date" class="form-control">
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label>建檔日期迄</label>
+          <input type="date" class="form-control">
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label>在職狀態</label>
+          <select class="form-select" id="inputGroupSelect01">
+            <option value="">全部</option>
+            <option value="1">在職</option>
+            <option value="2">離職</option>
+          </select>
+        </div>
+       <div class="col-12 d-flex align-items-end">
+          <div class="d-flex gap-2 w-100 border-0 p-0 m-0">
+            <button class="btn btn-primary flex-fill"><i class="bi bi-search me-2"></i>查詢</button>
+            <button class="btn btn-outline-secondary flex-fill"><i class="bi bi-arrow-counterclockwise me-2"></i>重設</button>
+            <button class="btn btn-success flex-fill"><i class="bi bi-plus me-2"></i>新增</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="empty-state">
+  <i class="bi bi-clipboard-minus mb-3"></i>
+  <h3 class="mb-2">尚未查詢</h3>
+  <p>請先填寫查詢條件並點擊查詢按鈕</p>
+</div>

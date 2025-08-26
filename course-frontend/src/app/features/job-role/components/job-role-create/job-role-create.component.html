@@ -1,0 +1,118 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card-title h4 mt-2"><i class="bi bi-briefcase me-2"></i>新增職務</div>
+  </div>
+  <div class="card-body">
+    <form
+      class="row g-3"
+      [formGroup]="createForm"
+      novalidate
+    >
+      <div class="col-md-6">
+        <label
+          for="jobRoleCode"
+          class="form-label"
+        >職務代碼 <span class="text-danger">*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="請輸入職務代碼"
+          formControlName="jobRoleCode"
+          [class.is-invalid]="isFieldInvalid('jobRoleCode')"
+          id="jobRoleCode"
+        >
+        <div
+          *ngIf="isFieldInvalid('jobRoleCode')"
+          id="jobRoleCode-error"
+          class="invalid-feedback"
+        >
+          {{ getFieldError('jobRoleCode') }}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label
+          for="jobRoleName"
+          class="form-label"
+        >職務名稱 <span class="text-danger">*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="請輸入職務名稱"
+          formControlName="jobRoleName"
+          [class.is-invalid]="isFieldInvalid('jobRoleName')"
+          id="jobRoleName"
+        >
+        <div
+          *ngIf="isFieldInvalid('jobRoleName')"
+          id="jobRoleName-error"
+          class="invalid-feedback"
+        >
+          {{ getFieldError('jobRoleName') }}
+        </div>
+      </div>
+      <div class="col-12">
+        <label
+          for="inputAddress2"
+          class="form-label"
+        >職務描述</label>
+        <textarea
+          style="height: 100px;"
+          class="form-control"
+          id="description"
+          placeholder="請輸入職務描述（選填）"
+          formControlName="description"
+          [class.is-invalid]="isFieldInvalid('description')"
+        ></textarea>
+        <div
+          *ngIf="isFieldInvalid('description')"
+          id="description-error"
+          class="invalid-feedback"
+        >
+          {{ getFieldError('description') }}
+        </div>
+      </div>
+      <div class="col-12">
+        <label
+          for="isActive"
+          class="form-label"
+        >職務狀態 <span class="text-danger">*</span></label>
+        <div class="form-check form-switch d-flex align-items-center">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="isActive"
+            formControlName="isActive"
+            [class.is-invalid]="isFieldInvalid('isActive')"
+            [checked]="isEnabled"
+            (change)="toggleEnabled($event)"
+          >
+          <label
+            class="form-check-label ms-2 mt-1"
+            for="isActive"
+          >{{ isEnabled ? '啟用' : '停用' }}</label>
+        </div>
+        <div
+          *ngIf="isFieldInvalid('isActive')"
+          id="isActive-error"
+          class="invalid-feedback"
+        >
+          {{ getFieldError('isActive') }}
+        </div>
+      </div>
+      <div class="col-12 text-end">
+        <button
+          type="submit"
+          class="btn btn-outline-danger me-3"
+        ><i class="bi bi-x-lg me-2"></i>取消</button>
+        <button
+          type="submit"
+          class="btn btn-outline-secondary me-3"
+        ><i class="bi bi-arrow-clockwise me-2"></i>重設</button>
+        <button
+          type="submit"
+          class="btn btn-outline-primary me-3"
+        ><i class="bi bi-check-lg me-2"></i>確定新增</button>
+      </div>
+    </form>
+  </div>
+</div>

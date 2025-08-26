@@ -1,0 +1,85 @@
+<div [class.collapsed]="!sidebarOpen">
+    <ul class="list-unstyled ps-0">
+        <!-- 基本主檔 -->
+        <li>
+            <button
+                class="btn w-100 text-start section-title"
+                (click)="toggleModule(0)"
+            >
+                <span class="menu-label">基本主檔</span>
+                <span class="float-end">
+                    <i
+                        class="bi"
+                        [ngClass]="{'bi-caret-down': !collapsedModules[0], 'bi-caret-up': collapsedModules[0]}"
+                    ></i>
+                </span>
+            </button>
+            <div *ngIf="collapsedModules[0]">
+                <ul class="list-unstyled ms-3">
+                    <li><a
+                            routerLink="departments"
+                            class="text-dark"
+                        ><span class="menu-label">部門主檔</span></a></li>
+                    <li><a
+                            routerLink="employees"
+                            class="text-dark"
+                        ><span class="menu-label">員工主檔</span></a></li>
+                    <li><a
+                            routerLink="job-roles"
+                            class="text-dark"
+                        ><span class="menu-label">職務主檔</span></a></li>
+                </ul>
+            </div>
+        </li>
+        <!-- 課程管理 -->
+        <li class="mt-3">
+            <button
+                class="btn w-100 text-start section-title"
+                (click)="toggleModule(1)"
+            >
+                <span class="menu-label">課程管理</span>
+                <span class="float-end">
+                    <i
+                        class="bi"
+                        [ngClass]="{'bi-caret-down': !collapsedModules[1], 'bi-caret-up': collapsedModules[1]}"
+                    ></i>
+                </span>
+            </button>
+            <div *ngIf="collapsedModules[1]">
+                <ul class="list-unstyled ms-3">
+                    <li><a
+                            routerLink="course-events"
+                            class="text-dark"
+                        ><span class="menu-label">課程活動</span></a></li>
+                    <li><a
+                            routerLink="courses"
+                            class="text-dark"
+                        ><span class="menu-label">課程主檔</span></a></li>
+                </ul>
+            </div>
+        </li>
+        <!-- Demo 功能 -->
+        <li class="mt-3">
+            <button
+                class="btn w-100 text-start section-title"
+                (click)="toggleModule(2)"
+            >
+                <span class="menu-label">Demo 功能</span>
+                <span class="float-end">
+                    <i
+                        class="bi"
+                        [ngClass]="{'bi-caret-down': !collapsedModules[2], 'bi-caret-up': collapsedModules[2]}"
+                    ></i>
+                </span>
+            </button>
+            <div *ngIf="collapsedModules[2]">
+                <ul class="list-unstyled ms-3">
+                    <li><a
+                            routerLink="dialog-demo"
+                            class="text-dark"
+                        ><span class="menu-label">Dialog Demo</span></a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

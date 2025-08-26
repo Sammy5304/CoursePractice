@@ -1,29 +1,8 @@
-.main-layout-wrapper {
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-}
-
-.main-content {
-  flex-grow: 1;
-  height: 100%;
-  overflow-y: auto;
-  min-height: 0;
-  padding: 2rem;
-  box-sizing: border-box;
-  
-  /* 隱藏滾動條但保持滾動功能 */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 和 Edge */
-}
-
-/* Webkit 瀏覽器 (Chrome, Safari) */
-.main-content::-webkit-scrollbar {
-  display: none;
-}
-
 // 主內容區塊標題（如基本主檔、課程管理等）
+  .custom-navbar .btn .btn-label { display: none !important; }
+  .custom-navbar .btn { padding-left: 0.45rem; padding-right: 0.45rem; }
+  .custom-navbar .btn i { margin-right: 0; font-size: 1.05rem; }
+  .custom-navbar .dropdown-toggle .bi { margin-right: 0; }
 .section-title, .card-header, .main-title {
   color: #1976d2;
   font-size: 2rem;
@@ -35,8 +14,8 @@
 }
 .custom-navbar {
   flex-shrink: 0;
-  background: linear-gradient(90deg, #232526 0%, #414345 100%);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background: #1B2A49;
+  background: linear-gradient(90deg, rgba(27, 42, 73, 1) 0%, rgba(30, 51, 92, 1) 100%);
   padding: 0.5rem 2rem;
   height: 60px;
   .navbar-brand {
@@ -51,110 +30,18 @@
 }
 
 #sidebar {
-  width: 240px;
+  width: 300px;
   min-width: 60px;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: #f8f9fa;
   border-right: 1px solid #e3eafc;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: 'Segoe UI', Arial, sans-serif;
   box-shadow: none;
   position: static;
-  height: auto;
+  height: 700px;
 }
 
 #sidebar.collapsed {
   width: 60px;
-}
-
-#sidebar .btn,
-#sidebar .btn-toggle,
-#sidebar a {
-  transition: color 0.2s, background 0.2s;
-}
-
-#sidebar .btn {
-  border: none;
-  background: transparent;
-  font-size: 1.1rem;
-  padding: 0.7rem 0.5rem 0.7rem 1rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  color: #1976d2;
-  font-weight: 400;
-  text-decoration: none;
-  justify-content: space-between;
-}
-
-#sidebar .btn:hover,
-#sidebar a:hover {
-  background: #e3eafc;
-  color: #1976d2;
-}
-
-#sidebar .bi {
-  font-size: 1.3rem;
-  margin-right: 0.5rem;
-  color: #1976d2;
-}
-
-#sidebar.collapsed .btn span,
-#sidebar.collapsed .btn-toggle span,
-#sidebar.collapsed a span,
-#sidebar.collapsed .fw-bold,
-#sidebar.collapsed ul li ul {
-  display: none !important;
-}
-
-#sidebar.collapsed .section-title {
-  color: transparent !important;
-}
-
-#sidebar .fw-bold {
-  font-size: 1.2rem;
-  color: #1976d2;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-
-#sidebar ul {
-  padding-left: 0;
-}
-
-#sidebar ul li {
-  margin-bottom: 0.5rem;
-}
-
-#sidebar ul li ul {
-  margin-top: 0.5rem;
-}
-
-#sidebar ul li ul a {
-  color: #222;
-  font-weight: 400;
-  font-size: 1rem;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
-  text-decoration: none;
-  display: block;
-}
-
-#sidebar ul li ul a:hover {
-  background: #e3eafc;
-  color: #1976d2;
-}
-
-#sidebar .active {
-  color: #1976d2 !important;
-  font-weight: 400;
-}
-
-#sidebar .btn-toggle {
-  font-weight: 500;
-}
-
-#sidebar .active {
-  color: #0d6efd !important;
 }

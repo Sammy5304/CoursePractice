@@ -1,0 +1,135 @@
+ul {
+  padding-left: 0;
+}
+
+/* Sidebar base styles (scoped to this component) copied from #sidebar rules */
+:host {
+  display: block;
+}
+
+:host .btn,
+:host .btn-toggle,
+:host a {
+  transition: color 0.2s, background 0.2s;
+}
+
+:host .btn {
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  padding: 0.7rem 0.5rem 0.7rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  color: #1976d2;
+  font-weight: 400;
+  text-decoration: none;
+  justify-content: space-between;
+}
+
+:host .btn:hover,
+:host a:hover {
+  background: #e3eafc;
+  color: #1976d2;
+}
+
+:host .bi {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  color: #1976d2;
+}
+
+:host .fw-bold {
+  font-size: 1.2rem;
+  color: #1976d2;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+:host .active {
+  color: #1976d2 !important;
+  font-weight: 400;
+}
+
+:host .btn-toggle {
+  font-weight: 500;
+}
+
+:host .active {
+  color: #0d6efd !important;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+ul li ul {
+  margin-top: 0.5rem;
+}
+
+ul li ul a {
+  color: #222;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  display: block;
+}
+
+ul li ul a:hover {
+  background: #e3eafc;
+  color: #1976d2;
+}
+
+
+/* When the component root has .collapsed (bound from parent), hide labels and caret and center icons */
+.collapsed .menu-label {
+  display: none !important;
+}
+
+.collapsed .float-end {
+  display: none !important;
+}
+
+.collapsed .btn,
+.collapsed a {
+  justify-content: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.collapsed .bi {
+  margin-right: 0 !important;
+  display: block;
+  font-size: 1.3rem;
+}
+
+/* ensure submenu lists are hidden when collapsed */
+.collapsed ul li ul {
+  display: none !important;
+}
+
+.collapsed .btn span,
+.collapsed .btn-toggle span,
+.collapsed a span,
+.collapsed .fw-bold,
+.collapsed ul li ul {
+  display: none !important;
+}
+
+.collapsed .btn,
+.collapsed a {
+  justify-content: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.collapsed .float-end {
+  display: none !important;
+}
+
+.collapsed .section-title {
+  color: transparent !important;
+}

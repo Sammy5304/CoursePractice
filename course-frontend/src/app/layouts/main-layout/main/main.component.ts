@@ -1,21 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { SidebarmanuComponent } from "../sidebarmanu/sidebarmanu.component";
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, SidebarmanuComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
 export class MainComponent implements OnInit{
-  collapsedModules: boolean[] = [];
-  
+
   currentDate = new Date();
   currentTime = new Date();
 
-  sidebarOpen = true;
+  // track whether sidebar is open; used by template and passed to child
+  sidebarOpen: boolean = true;
 
   ngOnInit() {
     setInterval(() => {
@@ -27,7 +28,5 @@ export class MainComponent implements OnInit{
     this.sidebarOpen = !this.sidebarOpen;
   }
 
-  toggleModule(index: number) {
-    this.collapsedModules[index] = !this.collapsedModules[index];
-  }
+
 }
