@@ -12,12 +12,16 @@ export const routes: Routes = [
                 loadChildren: () => import('./features/dashboard/dashboard.routes').then(m => m.DASHBOARD_ROUTES),
             },
             {
-                path: 'job-roles',
-                loadChildren: () => import('./features/job-role/job-role.routes').then(m => m.JOB_ROLE_ROUTES),
+                path: 'departments',
+                loadChildren: () => import('./features/department/department.routes').then(m => m.DEPARTMENT_ROUTES),
             },
             {
                 path: 'employees',
                 loadChildren: () => import('./features/employee/employee.routes').then(m => m.EMPLOYEE_ROUTES),
+            },
+            {
+                path: 'job-roles',
+                loadChildren: () => import('./features/job-role/job-role.routes').then(m => m.JOB_ROLE_ROUTES),
             }
         ]
     }

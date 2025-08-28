@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <div class="h5 card-title mt-2"><i class="bi bi-bookmarks me-2"></i>查詢結果</div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">部門代碼</th>
+          <th scope="col">部門名稱</th>
+          <th scope="col">上層部門代碼</th>
+          <th scope="col">部門階級</th>
+          <th scope="col">部門主管</th>
+          <th scope="col">是否啟用</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dept of deptlist">
+          <td>{{ dept.code }}</td>
+          <td>{{ dept.name }}</td>
+          <td>{{ dept.parentId }}</td>
+          <td>{{ dept.level }}</td>
+          <td>{{ dept.managerId }}</td>
+          <td>{{ dept.active }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

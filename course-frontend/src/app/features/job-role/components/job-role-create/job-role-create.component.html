@@ -101,16 +101,19 @@
       </div>
       <div class="col-12 text-end">
         <button
-          type="submit"
+          type="button"
           class="btn btn-outline-danger me-3"
+          (click)="onCreateCancel()"
         ><i class="bi bi-x-lg me-2"></i>取消</button>
         <button
-          type="submit"
+          type="button"
           class="btn btn-outline-secondary me-3"
+          (click)="onReset()"
         ><i class="bi bi-arrow-clockwise me-2"></i>重設</button>
         <button
           type="submit"
           class="btn btn-outline-primary me-3"
+          (click)="onSubmit()"
         ><i class="bi bi-check-lg me-2"></i>確定新增</button>
       </div>
     </form>

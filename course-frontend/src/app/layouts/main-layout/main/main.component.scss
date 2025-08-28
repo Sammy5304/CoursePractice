@@ -29,19 +29,27 @@
   }
 }
 
+/* Sidebar: sticky full-height with its own vertical scroll */
 #sidebar {
   width: 300px;
   min-width: 60px;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: #f8f9fa;
   border-right: 1px solid #e3eafc;
-  overflow: hidden;
   font-family: 'Segoe UI', Arial, sans-serif;
   box-shadow: none;
-  position: static;
-  height: 700px;
+  position: sticky;
+  top: 60px; /* height of navbar */
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #sidebar.collapsed {
   width: 60px;
+}
+
+/* Main content fills remaining space; allow natural document scroll */
+main.flex-fill {
+  min-height: calc(100vh - 60px);
 }

@@ -14,7 +14,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	overflow: hidden; /* prevent page-level scrollbar; let components handle inner scrolling */
+	/* Allow vertical scrolling when content exceeds viewport; keep horizontal hidden */
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 app-root {
