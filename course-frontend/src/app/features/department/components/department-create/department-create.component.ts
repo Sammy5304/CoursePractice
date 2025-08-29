@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Departments } from '../../model/department.model';
 import { DepartmentService } from '../../service/department.service';
 
@@ -13,6 +13,7 @@ import { DepartmentService } from '../../service/department.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './department-create.component.html',
   styleUrl: './department-create.component.scss'
@@ -22,7 +23,7 @@ export class DepartmentCreateComponent {
   isEnabled: boolean = true;
   createForm!: FormGroup;
 
-  department: Departments = { level: '', code: '', parentId: '', name: '', managerId: '', active: false };
+  department: Departments = { level: '', code: '', parentId: '', name: '', managerId: '', active: true };
 
   constructor(private formBuilder: FormBuilder, 
               private departmentService: DepartmentService,

@@ -4,7 +4,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	min-height: 40px; /* take some vertical space but not full screen */
+	min-height: 40vh; /* take some vertical space but not full screen */
 	color: #607d8b;
 }
 
@@ -16,6 +16,10 @@
 
 .empty-state h3 {
 	margin-bottom: 0.3rem;
+}
+
+.empty-state p {
+	margin: 0;
 }
 
 /* Fixed card sizing helpers */
@@ -53,6 +57,7 @@
 .card-header .card-title {
 	color: white;
 }
+
 
 /* Small screen adjustments: let card grow vertically but keep header stable */
 @media (max-width: 576px) {

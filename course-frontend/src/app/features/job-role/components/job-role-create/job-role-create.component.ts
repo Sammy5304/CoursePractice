@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { JobRoleService } from '../../service/job-role.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { JobRoles } from '../../model/job-role.model';
 
 @Component({
@@ -12,7 +12,8 @@ import { JobRoles } from '../../model/job-role.model';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './job-role-create.component.html',
   styleUrls: ['./job-role-create.component.scss']

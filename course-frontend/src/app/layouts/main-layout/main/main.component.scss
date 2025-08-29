@@ -49,7 +49,6 @@
   width: 60px;
 }
 
-/* Main content fills remaining space; allow natural document scroll */
 main.flex-fill {
   min-height: calc(100vh - 60px);
 }
